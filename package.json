@@ -1,0 +1,26 @@
+{
+  "name": "keysy-peasy",
+  "version": "1.0.0",
+  "description": "Really simple, centralized shortcut management.",
+  "main": "src/index.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "test": "node_modules/.bin/mocha --opts ./mocha.opts"
+  },
+  "keywords": [
+    "mocha",
+    "typescript",
+    "tdd"
+  ],
+  "author": "David Losert",
+  "license": "MIT",
+  "dependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.44",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.6.1"
+  }
+}
