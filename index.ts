@@ -40,13 +40,15 @@ class Shortcuts {
 
     public register(id: string, shortcuts: Array<IShortcut>): void {
         this.remove(id);
+
         for (let i = 0, ii = shortcuts.length; i < ii; i++) {
-            if (this._shortcuts[shortcuts[i].key] !== undefined) {
+            const shortcutKey = shortcuts[i].key.toString();
+            if (this._shortcuts[shortcutKey] !== undefined) {
                 throw new KeysyPeasyError("Duplicate shortcut", shortcuts[i]);
             }
             const shortcutMap: any = shortcuts;
             shortcutMap.id = id;
-            this._shortcuts[shortcuts[i].key] = shortcutMap;
+            this._shortcuts[shortcutKey] = shortcutMap;
         }
     }
 
