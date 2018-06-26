@@ -1,7 +1,7 @@
 interface IShortcut {
     key: string|number;
     callback: Function;
-    altKey: boolean;
+    altKey?: boolean;
 }
 
 
