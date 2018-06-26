@@ -13,7 +13,7 @@
     "typescript",
     "tdd"
   ],
-  "author": "David Losert",
+  "author": "Jack Martin <elmarti>",
   "license": "MIT",
   "dependencies": {
     "@types/chai": "^4.0.4",
