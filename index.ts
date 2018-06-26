@@ -29,11 +29,11 @@ class Shortcuts {
         }
     }
 
-    private _debounce(func: () => void, wait = 550) {
+    private _debounce(func: (event) => void, wait = 550) {
         let h: number;
-        return () => {
+        return event => {
             clearTimeout(h);
-            h = setTimeout(() => func(), wait);
+            h = setTimeout(() => func(event), wait);
         };
     }
 
@@ -46,7 +46,7 @@ class Shortcuts {
             if (this._shortcuts[shortcutKey] !== undefined) {
                 throw new KeysyPeasyError("Duplicate shortcut", shortcuts[i]);
             }
-            const shortcutMap: any = shortcuts;
+            const shortcutMap: any = shortcuts[i];
             shortcutMap.id = id;
             this._shortcuts[shortcutKey] = shortcutMap;
         }
@@ -65,9 +65,6 @@ class Shortcuts {
     }
 }
 
-export {Shortcuts};
-
-export default Shortcuts;
 const shortcuts = new Shortcuts();
 shortcuts.register("text-editor", [{
     key:"q",
