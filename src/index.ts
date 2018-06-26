@@ -6,7 +6,7 @@ interface IShortcut {
 
 
 class KeysyPeasyError extends Error {
-    private shortcut: IShortcut;
+    public shortcut: IShortcut;
 
     constructor(message: string, shortcut: IShortcut) {
         super(message);
