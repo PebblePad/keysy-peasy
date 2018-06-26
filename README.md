@@ -19,13 +19,13 @@ As mentioned before, Keysy-peasy works with contexts; the idea is that you can r
     shortcuts.register("text-editor", [{
         key:"q",
         callback: function(event) {
-            alert("pressed alt + ins")
+            alert("pressed alt + q")
         },
         altKey:true
     },{
-        key:"3",
+        key:3,
         callback: function(event) {
-            alert("pressed w")
+            alert("pressed 3")
         }
     }]);
     
