@@ -46,3 +46,7 @@ Given that we have added our shortcuts by a namespace, they can be removed by na
 ```
 ### Getting a list of shortcuts
 One of the best parts of Keysy-peasy is that we have full control of our shortcuts; it's possible to query as to which shortcuts are registered at any given time. This makes it possible to dynamically show the user the current shortcuts
+
+```JavaScript
+    const shortcutMap = shortcuts.getHandlers();
+```
