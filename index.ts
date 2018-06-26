@@ -1,7 +1,7 @@
 interface IShortcut {
     key: string|number;
     callback: Function;
-    altKey: boolean;
+    altKey?: boolean;
 }
 
 
@@ -68,3 +68,16 @@ class Shortcuts {
 export {Shortcuts};
 
 export default Shortcuts;
+const shortcuts = new Shortcuts();
+shortcuts.register("text-editor", [{
+    key:"q",
+    callback: function(event) {
+        alert("pressed alt + q")
+    },
+    altKey:true
+},{
+    key:3,
+    callback: function(event) {
+        alert("pressed 3")
+    }
+}]);
