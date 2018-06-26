@@ -17,13 +17,13 @@ As mentioned before, Keysy-peasy works with contexts; the idea is that you can r
 
 ```JavaScript
     shortcuts.register("text-editor", [{
-        keyCode:45,
+        key:"q",
         callback: function(event) {
             alert("pressed alt + ins")
         },
         altKey:true
     },{
-        keyCode:54,
+        key:"3",
         callback: function(event) {
             alert("pressed w")
         }
@@ -31,10 +31,10 @@ As mentioned before, Keysy-peasy works with contexts; the idea is that you can r
     
 ```
 
-Firstly, [find a keyCode](http://keycode.info/); this denotes which key we are attaching the handler to. Each shortcut mentioned above adheres to the interface:
+
 ```Typescript
     interface IShortcut {
-        keyCode: number;
+        key: string|number;
         callback: Function;
         altKey: boolean;
     }

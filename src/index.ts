@@ -1,5 +1,5 @@
 interface IShortcut {
-    keyCode: number;
+    key: string|number;
     callback: Function;
     altKey: boolean;
 }
@@ -23,7 +23,7 @@ class Shortcuts {
     }
 
     private _handler(event: KeyboardEvent): void {
-        const shortcut = this._shortcuts[event.keyCode];
+        const shortcut = this._shortcuts[event.key];
         if (event.altKey === shortcut.altKey) {
             shortcut.callback(event);
         }
@@ -41,12 +41,12 @@ class Shortcuts {
     public register(id: string, shortcuts: Array<IShortcut>): void {
         this.remove(id);
         for (let i = 0, ii = shortcuts.length; i < ii; i++) {
-            if (this._shortcuts[shortcuts[i].keyCode] !== undefined) {
+            if (this._shortcuts[shortcuts[i].key] !== undefined) {
                 throw new KeysyPeasyError("Duplicate shortcut", shortcuts[i]);
             }
-            const shortcutMap: any = shortcuts;
+            const shortcutMap: any = shortcuts[i];
             shortcutMap.id = id;
-            this._shortcuts[shortcuts[i].keyCode] = shortcutMap;
+            this._shortcuts[shortcuts[i].key] = shortcutMap;
         }
 
     }
