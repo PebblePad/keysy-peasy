@@ -24,16 +24,16 @@ class Shortcuts {
 
     private _handler(event: KeyboardEvent): void {
         const shortcut = this._shortcuts[event.key];
-        if (event.altKey === shortcut.altKey) {
+        if (event.altKey === !!shortcut.altKey) {
             shortcut.callback(event);
         }
     }
 
-    private _debounce(func: () => void, wait = 550) {
+    private _debounce(func: (event) => void, wait = 550) {
         let h: number;
-        return () => {
+        return event => {
             clearTimeout(h);
-            h = setTimeout(() => func(), wait);
+            h = setTimeout(() => func(event), wait);
         };
     }
 
