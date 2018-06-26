@@ -48,7 +48,6 @@ class Shortcuts {
             shortcutMap.id = id;
             this._shortcuts[shortcuts[i].keyCode] = shortcutMap;
         }
-
     }
 
     public getHandlers(): any {

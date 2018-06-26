@@ -2,7 +2,7 @@
   "name": "keysy-peasy",
   "version": "1.0.0",
   "description": "Really simple, centralized shortcut management.",
-  "main": "src/index.ts",
+  "main": "index.ts",
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
