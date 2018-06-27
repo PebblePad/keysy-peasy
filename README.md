@@ -1,5 +1,8 @@
 ![PebblePad](https://www.pebblepad.co.uk/images/logo/logo.png)
-# Keysy-peasy
+
+[![Build Status](https://travis-ci.org/PebblePad/keysy-peasy.svg?branch=master)](https://travis-ci.org/PebblePad/keysy-peasy)
+
+## Keysy-peasy
 Keysy-peasy makes keyboard shortcuts easy peasy.
 
 
