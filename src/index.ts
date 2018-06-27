@@ -1,6 +1,6 @@
 interface IShortcut {
     key: string|number;
-    callback: Function;
+    callback(event:KeyboardEvent): void ;
     altKey?: boolean;
 }
 
