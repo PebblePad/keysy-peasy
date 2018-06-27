@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "description": "Really simple, centralized shortcut management.",
   "main": "src/index.ts",
+  "types": "main.d.ts",
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
     "test": "node_modules/.bin/mocha --opts ./mocha.opts"
   },
   "keywords": [
-    "mocha",
+    "shortcut",
+    "shortcuts",
+    "pebblepad",
     "typescript",
-    "tdd"
+    "mocha"
   ],
   "author": "Jack Martin <elmarti>",
   "license": "MIT",
