@@ -3,8 +3,8 @@ interface IShortcut {
     callback(event: KeyboardEvent): void;
     altKey?: boolean;
 }
-interface IShortcutMapItem {
-    contextId:string;
+interface IShortcutMapItem extends IShortcut{
+    contextId?:string;
 }
 
 
@@ -49,7 +49,7 @@ class Shortcuts {
             if (this._shortcuts[shortcutKey] !== undefined) {
                 throw new KeysyPeasyError("Duplicate shortcut", shortcuts[i]);
             }
-            const shortcutMap: any = shortcuts[i];
+            const shortcutMap: IShortcutMapItem = shortcuts[i];
             shortcutMap.contextId = contextId;
             this._shortcuts[shortcutKey] = shortcutMap;
         }
