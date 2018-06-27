@@ -37,24 +37,24 @@ var Shortcuts = /** @class */ (function () {
             h = setTimeout(function () { return func(event); }, wait);
         };
     };
-    Shortcuts.prototype.register = function (id, shortcuts) {
-        this.remove(id);
+    Shortcuts.prototype.register = function (contextId, shortcuts) {
+        this.remove(contextId);
         for (var i = 0, ii = shortcuts.length; i < ii; i++) {
             var shortcutKey = shortcuts[i].key.toString();
             if (this._shortcuts[shortcutKey] !== undefined) {
                 throw new KeysyPeasyError("Duplicate shortcut", shortcuts[i]);
             }
             var shortcutMap = shortcuts[i];
-            shortcutMap.id = id;
+            shortcutMap.contextId = contextId;
             this._shortcuts[shortcutKey] = shortcutMap;
         }
     };
     Shortcuts.prototype.getHandlers = function () {
         return this._shortcuts;
     };
-    Shortcuts.prototype.remove = function (id) {
+    Shortcuts.prototype.remove = function (contextId) {
         for (var key in this._shortcuts) {
-            if (this._shortcuts[key].id === id) {
+            if (this._shortcuts[key].contextId === contextId) {
                 delete this._shortcuts[key];
             }
         }

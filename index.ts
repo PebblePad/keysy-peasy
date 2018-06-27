@@ -3,6 +3,9 @@ interface IShortcut {
     callback(event: KeyboardEvent): void;
     altKey?: boolean;
 }
+interface IShortcutMapItem {
+    contextId:string;
+}
 
 
 class KeysyPeasyError extends Error {
@@ -38,8 +41,8 @@ class Shortcuts {
     }
 
 
-    public register(id: string, shortcuts: Array<IShortcut>): void {
-        this.remove(id);
+    public register(contextId: string, shortcuts: Array<IShortcut>): void {
+        this.remove(contextId);
 
         for (let i = 0, ii = shortcuts.length; i < ii; i++) {
             const shortcutKey = shortcuts[i].key.toString();
@@ -47,7 +50,7 @@ class Shortcuts {
                 throw new KeysyPeasyError("Duplicate shortcut", shortcuts[i]);
             }
             const shortcutMap: any = shortcuts[i];
-            shortcutMap.id = id;
+            shortcutMap.contextId = contextId;
             this._shortcuts[shortcutKey] = shortcutMap;
         }
     }
@@ -56,9 +59,9 @@ class Shortcuts {
         return this._shortcuts;
     }
 
-    public remove(id: string): void {
+    public remove(contextId: string): void {
         for (let key in this._shortcuts) {
-            if (this._shortcuts[key].id === id) {
+            if (this._shortcuts[key].contextId === contextId) {
                 delete this._shortcuts[key];
             }
         }
