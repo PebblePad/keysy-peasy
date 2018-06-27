@@ -3,6 +3,12 @@ interface IShortcut {
     callback(event:KeyboardEvent): void ;
     altKey?: boolean;
 }
+interface IShortcutMapItem extends IShortcut {
+    contextId?:string;
+}
+interface IShortcutMap {
+    [key: string]: IShortcutMapItem
+}
 
 
 class KeysyPeasyError extends Error {
@@ -16,7 +22,7 @@ class KeysyPeasyError extends Error {
 
 class Shortcuts {
 
-    private _shortcuts: any = {};
+    private _shortcuts: IShortcutMap = {};
 
     constructor(element: HTMLElement = document.documentElement) {
         element.addEventListener("keydown", this._debounce(this._handler.bind(this)));
@@ -38,27 +44,27 @@ class Shortcuts {
     }
 
 
-    public register(id: string, shortcuts: Array<IShortcut>): void {
-        this.remove(id);
+    public register(contextId: string, shortcuts: Array<IShortcut>): void {
+        this.remove(contextId);
         for (let i = 0, ii = shortcuts.length; i < ii; i++) {
             const shortcutKey = shortcuts[i].key.toString();
             if (this._shortcuts[shortcutKey] !== undefined) {
                 throw new KeysyPeasyError("Duplicate shortcut", shortcuts[i]);
             }
-            const shortcutMap: any = shortcuts[i];
-            shortcutMap.id = id;
+            const shortcutMap: IShortcutMapItem = shortcuts[i];
+            shortcutMap.contextId = contextId;
             this._shortcuts[shortcutKey] = shortcutMap;
         }
 
     }
 
-    public getHandlers(): any {
+    public getHandlers(): IShortcutMap {
         return this._shortcuts;
     }
 
-    public remove(id: string): void {
+    public remove(contextId: string): void {
         for (let key in this._shortcuts) {
-            if (this._shortcuts[key].id === id) {
+            if (this._shortcuts[key].contextId === contextId) {
                 delete this._shortcuts[key];
             }
         }

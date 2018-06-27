@@ -1,5 +1,5 @@
-import {expect} from 'chai';
-import {Shortcuts} from './';
+import { expect } from 'chai';
+import { Shortcuts } from './';
 
 const document = {
     addEventListener: (event: string, callback: () => void) => {
@@ -21,7 +21,7 @@ describe('Registering events', () => {
         shortcuts.register(testId, [exampleShortcut]);
         const shortcut = shortcuts.getHandlers()[exampleShortcut.key];
         expect(shortcut.key).to.equal(exampleShortcut.key);
-        expect(shortcut.id).to.equal(testId);
+        expect(shortcut.contextId).to.equal(testId);
         expect(shortcut.altKey).to.equal(exampleShortcut.altKey);
         expect(shortcut.callback).to.equal(exampleShortcut.callback);
     });
