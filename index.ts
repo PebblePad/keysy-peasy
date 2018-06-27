@@ -6,7 +6,9 @@ interface IShortcut {
 interface IShortcutMapItem extends IShortcut{
     contextId?:string;
 }
-
+interface IShortcutMap {
+    [key: string]: IShortcutMapItem
+}
 
 class KeysyPeasyError extends Error {
     public shortcut: IShortcut;
@@ -55,7 +57,7 @@ class Shortcuts {
         }
     }
 
-    public getHandlers(): any {
+    public getHandlers(): IShortcutMap {
         return this._shortcuts;
     }
 
