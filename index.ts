@@ -21,7 +21,7 @@ class KeysyPeasyError extends Error {
 
 class Shortcuts {
 
-    private _shortcuts: any = {};
+    private _shortcuts: IShortcutMap = {};
 
     constructor(element: HTMLElement = document.documentElement) {
         element.addEventListener("keydown", this._debounce(this._handler.bind(this)));
