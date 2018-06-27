@@ -9,8 +9,10 @@ import { Shortcuts } from 'keysy-peasy';
 
 const shortcuts = new Shortcuts(document);
 ```
+The first param passed to `Shortcuts` is the element upon which the handler will be registered. If nothing is passed, it will default to `document.documentElement`.
 
-Keysy-peasy works with contexts; key handlers can only be registered once for a given instance of `Shortcuts`.
+All shortcuts exist within the scope of the `Shortcuts` instance. Within here, you can add an array of shortcuts and associate it with a namespace. 
+The idea here is that you can register and remove shortcuts in a group, which is useful when you move between views with different sets of shortcuts.
 
 ### Registering a handler
 As mentioned before, Keysy-peasy works with contexts; the idea is that you can register a set of handlers, for a given view or template and remove them when your done. Let's register a handler for a text editor.
