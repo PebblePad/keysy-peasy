@@ -1,9 +1,16 @@
 {
   "name": "keysy-peasy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Really simple, centralized shortcut management.",
   "main": "src/index.ts",
   "types": "main.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PebblePad/keysy-peasy"
+  },
+  "bugs": {
+    "url": "https://github.com/PebblePad/keysy-peasy/issues"
+  },
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
