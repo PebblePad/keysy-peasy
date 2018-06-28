@@ -1,6 +1,6 @@
 {
   "name": "keysy-peasy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Really simple, centralized shortcut management.",
   "main": "src/index.ts",
   "types": "main.d.ts",
