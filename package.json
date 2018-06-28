@@ -18,7 +18,7 @@
   ],
   "author": "Jack Martin <elmarti>",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.44",
     "chai": "^4.1.2",
