@@ -1,10 +1,11 @@
-import { expect } from 'chai';
-import { Shortcuts } from './';
 
-const document = {
+const { expect } = require('chai');
+const { Shortcuts } = require("./");
+
+document = {
     addEventListener: (event: string, callback: () => void) => {
     }
-} as HTMLElement;
+} as Document;
 
 describe('Registering events', () => {
     const shortcuts = new Shortcuts(document);

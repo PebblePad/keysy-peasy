@@ -55,3 +55,7 @@ One of the best parts of Keysy-peasy is that we have full control of our shortcu
 ```JavaScript
     const shortcutMap = shortcuts.getHandlers();
 ```
+
+
+### need AMD?
+We build to AMD, but you'll need to include it directly from `keysy-peasy/dist/amd/index.js`

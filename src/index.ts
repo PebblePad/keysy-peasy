@@ -1,3 +1,5 @@
+import Timer = NodeJS.Timer;
+
 class KeysyPeasyError extends Error {
     public shortcut: IShortcut;
 
@@ -23,7 +25,7 @@ class Shortcuts {
     }
 
     private _debounce(func: (event) => void, wait = 550) {
-        let h: number;
+        let h: Timer;
         return event => {
             clearTimeout(h);
             h = setTimeout(() => func(event), wait);
@@ -57,7 +59,7 @@ class Shortcuts {
         }
     }
 }
-
-export {Shortcuts};
-
+export {
+    Shortcuts
+};
 export default Shortcuts;
