@@ -19,7 +19,8 @@ class Shortcuts {
 
     private _handler(event: KeyboardEvent): void {
         const shortcut = this._shortcuts[event.key.toString().toLowerCase()];
-        if (event.altKey === !!shortcut.altKey) {
+
+        if (shortcut !== undefined && event.altKey === !!shortcut.altKey) {
             shortcut.callback(event);
         }
     }
