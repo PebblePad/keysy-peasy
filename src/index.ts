@@ -18,7 +18,7 @@ class Shortcuts {
     }
 
     private _handler(event: KeyboardEvent): void {
-        const shortcut = this._shortcuts[event.key];
+        const shortcut = this._shortcuts[event.key.toString().toLowerCase()];
         if (event.altKey === !!shortcut.altKey) {
             shortcut.callback(event);
         }
@@ -36,7 +36,7 @@ class Shortcuts {
     public register(contextId: string, shortcuts: Array<IShortcut>): void {
         this.remove(contextId);
         for (let i = 0, ii = shortcuts.length; i < ii; i++) {
-            const shortcutKey = shortcuts[i].key.toString();
+            const shortcutKey = shortcuts[i].key.toString().toLowerCase();
             if (this._shortcuts[shortcutKey] !== undefined) {
                 throw new KeysyPeasyError("Duplicate shortcut", shortcuts[i]);
             }
