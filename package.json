@@ -3,7 +3,7 @@
   "version": "1.1.6",
   "description": "Really simple, centralized shortcut management.",
   "main": "dist/index.js",
-  "types": "main.d.ts",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/PebblePad/keysy-peasy"
@@ -13,8 +13,8 @@
   },
   "scripts": {
     "prepublish": "npm run build && npm run build:amd",
-    "build": "tsc",
-    "build:amd":"tsc --module amd --outDir ./dist/amd",
+    "build": "tsc -p tsconfig.json",
+    "build:amd":"tsc -p tsconfig.json --module amd --outDir ./dist/amd",
     "test": "node_modules/.bin/mocha --opts ./mocha.opts"
   },
   "keywords": [
@@ -25,6 +25,9 @@
     "mocha"
   ],
   "author": "Jack Martin <elmarti>",
+  "contributors": [
+    "Chris Rowe <chris@pebblepad.co.uk>"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.0.4",
@@ -34,5 +37,10 @@
     "rollup": "~0.63.4",
     "ts-node": "^3.3.0",
     "typescript": "^2.6.1"
-  }
+  },
+  "files": [
+    "dist/types/",
+    "dist/index.js",
+    "dist/index.js.map"
+  ]
 }

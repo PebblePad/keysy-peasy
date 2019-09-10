@@ -1,10 +1,12 @@
 {
   "compilerOptions" : {
     "module" : "commonjs",
-    "outDir": "./dist",
+    "rootDir": "src",
+    "outDir": "dist",
     "target" : "es5",
-    "sourceMap" : true
-
+    "sourceMap" : true,
+    "declaration": true,
+    "declarationDir": "dist/types"
   },
   "typeRoots": [
     "node_modules/@types"
@@ -17,6 +19,8 @@
   "exclude" : [
     "node_modules",
     "src/**/*.spec.ts"
-
+  ],
+  "include": [
+    "src/**/*.ts"
   ]
 }

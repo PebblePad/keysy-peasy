@@ -1,4 +1,7 @@
 import Timer = NodeJS.Timer;
+import { IShortcut } from "./interfaces/IShortcut";
+import { IShortcutMap } from "./interfaces/IShortcutMap";
+import { IShortcutMapItem } from "./interfaces/IShortcutMapItem";
 
 class KeysyPeasyError extends Error {
     public shortcut: IShortcut;
@@ -60,7 +63,5 @@ class Shortcuts {
         }
     }
 }
-export {
-    Shortcuts
-};
-export default Shortcuts;
+
+export { Shortcuts, IShortcut, IShortcutMap, IShortcutMapItem };
