@@ -15,14 +15,13 @@
     "prepublish": "npm run build && npm run build:amd",
     "build": "tsc -p tsconfig.json",
     "build:amd": "tsc -p tsconfig.json --module amd --outDir ./dist/amd",
-    "test": "node_modules/.bin/mocha --opts ./mocha.opts"
+    "test": "jest"
   },
   "keywords": [
     "shortcut",
     "shortcuts",
     "pebblepad",
-    "typescript",
-    "mocha"
+    "typescript"
   ],
   "author": "Jack Martin <elmarti>",
   "contributors": [
@@ -30,17 +29,16 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^4.2.2",
-    "@types/mocha": "^5.2.7",
-    "chai": "^4.2.0",
-    "mocha": "^6.2.0",
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
     "rollup": "^1.21.2",
-    "ts-node": "^8.3.0",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.6.2"
   },
   "files": [
+    "dist/classes",
     "dist/types/",
     "dist/index.js",
-    "dist/index.js.map"
+    "dist/**/*.js.map"
   ]
 }

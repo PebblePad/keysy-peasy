@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src",
+        "target": "es5",
+        "module": "none",
+        "lib": ["es6"],
+        "allowSyntheticDefaultImports": true,
+        "allowJs": false,
+        "sourceMap": true,
+        "downlevelIteration": true,
+        "esModuleInterop": true
+    },
+    "exclude": ["node_modules", "node_modules/**/*"]
+}
