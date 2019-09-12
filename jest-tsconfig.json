@@ -3,6 +3,7 @@
         "baseUrl": "src",
         "target": "es5",
         "module": "none",
+        "moduleResolution": "node",
         "lib": ["es6"],
         "allowSyntheticDefaultImports": true,
         "allowJs": false,
