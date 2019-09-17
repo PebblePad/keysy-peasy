@@ -1,9 +1,9 @@
 {
   "name": "keysy-peasy",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "Really simple, centralized shortcut management.",
   "main": "dist/index.js",
-  "types": "main.d.ts",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/PebblePad/keysy-peasy"
@@ -13,26 +13,32 @@
   },
   "scripts": {
     "prepublish": "npm run build && npm run build:amd",
-    "build": "tsc",
-    "build:amd":"tsc --module amd --outDir ./dist/amd",
-    "test": "node_modules/.bin/mocha --opts ./mocha.opts"
+    "build": "tsc -p tsconfig.json",
+    "build:amd": "tsc -p tsconfig.json --module amd --outDir ./dist/amd",
+    "test": "jest"
   },
   "keywords": [
     "shortcut",
     "shortcuts",
     "pebblepad",
-    "typescript",
-    "mocha"
+    "typescript"
   ],
   "author": "Jack Martin <elmarti>",
+  "contributors": [
+    "Chris Rowe <chris@pebblepad.co.uk>"
+  ],
   "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^4.0.4",
-    "@types/mocha": "^2.2.44",
-    "chai": "^4.1.2",
-    "mocha": "^4.0.1",
-    "rollup": "~0.63.4",
-    "ts-node": "^3.3.0",
-    "typescript": "^2.6.1"
-  }
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "rollup": "^1.21.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.6.2"
+  },
+  "files": [
+    "dist/classes",
+    "dist/types/",
+    "dist/index.js",
+    "dist/**/*.js.map"
+  ]
 }
