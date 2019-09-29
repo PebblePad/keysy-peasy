@@ -10,6 +10,7 @@
       "dom"
     ],
     "sourceMap" : true,
+    "inlineSources": true,
     "declaration": true,
     "declarationDir": "dist/types"
   },
