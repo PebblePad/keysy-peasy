@@ -5,6 +5,8 @@
 ## Keysy-peasy
 Keysy-peasy makes keyboard shortcuts easy peasy.
 
+**Please note - Keysy-peasy does not handle browser differences for `key` values, eg, IE uses "Esc" whereas other
+browsers use Escape**
 
 Start by importing the package
 ```JavaScript
