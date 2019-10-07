@@ -1,3 +1,7 @@
+## 1.2.1
+### Changed
+* Inline sourcemaps
+
 ## 1.2.0
 ### Added
 * Type declaration for `KeasyPeasyError` and `Shortcuts` 
