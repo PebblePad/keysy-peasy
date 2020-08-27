@@ -82,12 +82,12 @@ describe('When using keysy peasy', () => {
         });
     });
 
-    describe("and an event occurs", () => {
+    describe("and an event occurs without a modifier", () => {
         beforeEach(() => {
-            shortcuts.register(secondTestId, [exampleShortcut3]);
+            shortcuts.register(firstTestId, [exampleShortcut3]);
         });
 
-        describe("and a shortcut is registered for the events key", () => {
+        describe("and a shortcut is registered for the event's key", () => {
             test("it should trigger the callback", () => {
                 document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "p", bubbles: true}));
                 jest.runAllTimers();
@@ -95,7 +95,28 @@ describe('When using keysy peasy', () => {
             });
         });
 
-        describe("and no shortcut is registered for the events key", () => {
+        describe("and a shortcut is removed for the event's key", () => {
+            test("it should not trigger the callback once removed", () => {
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "p", bubbles: true}));
+                jest.runAllTimers();
+                shortcuts.remove(firstTestId);
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "p", bubbles: true}));
+                jest.runAllTimers();
+                expect(callback).toBeCalledTimes(1);
+            });
+        });
+
+        describe("and a shortcut is removed for the event's key before the debounce", () => {
+            test("it should not trigger the callback", () => {
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "p", bubbles: true}));
+                shortcuts.remove(firstTestId);
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "p", bubbles: true}));
+                jest.runAllTimers();
+                expect(callback).toBeCalledTimes(0);
+            });
+        });
+
+        describe("and no shortcut is registered for the event's key", () => {
             test("it should trigger the callback", () => {
                 document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "g", bubbles: true}));
                 jest.runAllTimers();
@@ -106,6 +127,57 @@ describe('When using keysy peasy', () => {
         describe("and the key is undefined", () => {
             test("it should not run the callback", () => {
                 document.documentElement.dispatchEvent(new KeyboardEvent("keydown"));
+                jest.runAllTimers();
+                expect(callback).not.toBeCalled();
+            });
+        });
+    });
+
+    describe("and an event occurs with a modifier", () => {
+        beforeEach(() => {
+            shortcuts.register(firstTestId, [exampleShortcut2]);
+        });
+
+        describe("and a shortcut is registered for the event's key", () => {
+            test("it should trigger the callback", () => {
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "f", bubbles: true, altKey: true}));
+                jest.runAllTimers();
+                expect(callback).toBeCalledTimes(1)
+            });
+        });
+
+        describe("and a shortcut is removed for the event's key", () => {
+            test("it should not trigger the callback once removed", () => {
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "f", bubbles: true, altKey: true}));
+                jest.runAllTimers();
+                shortcuts.remove(firstTestId);
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "f", bubbles: true, altKey: true}));
+                jest.runAllTimers();
+                expect(callback).toBeCalledTimes(1);
+            });
+        });
+
+        describe("and a shortcut is removed for the event's key before the debounce", () => {
+            test("it should not trigger the callback", () => {
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "f", bubbles: true, altKey: true}));
+                shortcuts.remove(firstTestId);
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "f", bubbles: true, altKey: true}));
+                jest.runAllTimers();
+                expect(callback).toBeCalledTimes(0);
+            });
+        });
+
+        describe("and no shortcut is registered for the event's key", () => {
+            test("it should trigger the callback", () => {
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "g", bubbles: true, altKey: true}));
+                jest.runAllTimers();
+                expect(callback).not.toBeCalled();
+            });
+        });
+
+        describe("and the key is undefined", () => {
+            test("it should not run the callback", () => {
+                document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {altKey: true}));
                 jest.runAllTimers();
                 expect(callback).not.toBeCalled();
             });
