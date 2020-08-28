@@ -168,7 +168,7 @@ describe('When using keysy peasy', () => {
         });
 
         describe("and no shortcut is registered for the event's key", () => {
-            test("it should trigger the callback", () => {
+            test("it should not trigger the callback", () => {
                 document.documentElement.dispatchEvent(new KeyboardEvent("keydown", {"key": "g", bubbles: true, altKey: true}));
                 jest.runAllTimers();
                 expect(callback).not.toBeCalled();
