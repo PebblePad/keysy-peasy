@@ -7,13 +7,21 @@ import { KeysyPeasyError } from "./KeasyPeasyError";
 export class Shortcuts {
 
     private _shortcuts: IShortcutMap = {};
+    private _element: HTMLElement;
+    private readonly _keyDownHandler: (event) => void;
 
     constructor(element: HTMLElement = document.documentElement) {
-        element.addEventListener("keydown", this._debounce(this._handler.bind(this)));
+        this._element = element;
+        this._keyDownHandler = this._debounce(this._handler.bind(this))
+        this._element.addEventListener("keydown", this._keyDownHandler);
     }
 
     private _handler(event: KeyboardEvent): void {
-        const shortcut = this._shortcuts[event.key.toString().toLowerCase()];
+        if(event.key === undefined){
+            return;
+        }
+
+        const shortcut = this._shortcuts[event.key.toLowerCase()];
 
         if (shortcut !== undefined && event.altKey === !!shortcut.altKey) {
             shortcut.callback(event);
@@ -52,5 +60,10 @@ export class Shortcuts {
                 delete this._shortcuts[key];
             }
         }
+    }
+
+    public destroy(): void {
+        this._shortcuts = {};
+        this._element.removeEventListener("keydown", this._keyDownHandler);
     }
 }

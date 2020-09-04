@@ -1,3 +1,9 @@
+## 1.3.0
+### Added
+* Destroy method on Shortcuts
+### Changed
+* Fixed issue with Shortcuts handler erroring when receiving an event with no key value (browser bug)
+
 ## 1.2.1
 ### Changed
 * Inline sourcemaps
