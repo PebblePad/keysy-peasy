@@ -8,7 +8,7 @@ export class Shortcuts {
 
     private _shortcuts: IShortcutMap = {};
     private _element: HTMLElement;
-    private readonly _keyDownHandler: (event) => void;
+    private readonly _keyDownHandler: (event: KeyboardEvent) => void;
 
     constructor(element: HTMLElement = document.documentElement) {
         this._element = element;
@@ -28,9 +28,9 @@ export class Shortcuts {
         }
     }
 
-    private _debounce(func: (event) => void, wait = 550) {
+    private _debounce(func: (event: KeyboardEvent) => void, wait = 550) {
         let h: Timer;
-        return event => {
+        return (event: KeyboardEvent) => {
             clearTimeout(h);
             h = setTimeout(() => func(event), wait);
         };
