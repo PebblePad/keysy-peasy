@@ -1,18 +1,24 @@
-const jestConfig = {
-    roots: ["<rootDir>/src"],
+module.exports = {
+    roots: [
+        "<rootDir>/src",
+    ],
     transform: {
-        "^.+\\.(js|ts)?$": "ts-jest"
+        "^.+\\.(js|ts)?$": "ts-jest",
     },
     testRegex: ".*(test|spec)\\.(ts)?$",
-    moduleFileExtensions: ["ts", "js", "json"],
+    moduleFileExtensions: [
+        "js",
+        "json",
+        "ts",
+    ],
+    testEnvironment: "jsdom",
     globals: {
         "ts-jest": {
+            tsconfig: "./jest-tsconfig.json",
             preset: "js-with-ts",
             isolatedModules: true,
-            tsConfig: "./jest-tsconfig.json",
-            diagnostics: false
-        }
+            diagnostics: false,
+        },
     },
-};
-
-module.exports = jestConfig;
+    preset: "ts-jest/presets/js-with-ts",
+}
